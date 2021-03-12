@@ -95,7 +95,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">acdh_xml_pyutils</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">acdh_xml_pyutils package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#acdh-xml-pyutils-xml-module">acdh_xml_pyutils.xml module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-acdh_xml_pyutils.xml">acdh_xml_pyutils.xml module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-acdh_xml_pyutils">Module contents</a></li>
 </ul>
 </li>
@@ -176,8 +176,60 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="acdh-xml-pyutils-xml-module">
-<h2>acdh_xml_pyutils.xml module<a class="headerlink" href="#acdh-xml-pyutils-xml-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-acdh_xml_pyutils.xml">
+<span id="acdh-xml-pyutils-xml-module"></span><h2>acdh_xml_pyutils.xml module<a class="headerlink" href="#module-acdh_xml_pyutils.xml" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="acdh_xml_pyutils.xml.XMLReader">
+<em class="property">class </em><code class="sig-prename descclassname">acdh_xml_pyutils.xml.</code><code class="sig-name descname">XMLReader</code><span class="sig-paren">(</span><em class="sig-param">xml=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/acdh_xml_pyutils/xml.html#XMLReader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#acdh_xml_pyutils.xml.XMLReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to parse, preprocess and save XML/TEI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>xml</strong> (<em>str</em>) – An XML Document, either a File Path, an URL to an XML or an XML string</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A XMLReader instance</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><cite>xml.XMLReader</cite></p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="acdh_xml_pyutils.xml.XMLReader.return_byte_like_object">
+<code class="sig-name descname">return_byte_like_object</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/acdh_xml_pyutils/xml.html#XMLReader.return_byte_like_object"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#acdh_xml_pyutils.xml.XMLReader.return_byte_like_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns current doc as byte like object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="acdh_xml_pyutils.xml.XMLReader.return_string">
+<code class="sig-name descname">return_string</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/acdh_xml_pyutils/xml.html#XMLReader.return_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#acdh_xml_pyutils.xml.XMLReader.return_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns current doc as string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="acdh_xml_pyutils.xml.XMLReader.tree_to_file">
+<code class="sig-name descname">tree_to_file</code><span class="sig-paren">(</span><em class="sig-param">file=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/acdh_xml_pyutils/xml.html#XMLReader.tree_to_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#acdh_xml_pyutils.xml.XMLReader.tree_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>saves current tree to file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file</strong> (<em>str</em>) – A filename/location to save the current doc</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The save-location</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-acdh_xml_pyutils">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-acdh_xml_pyutils" title="Permalink to this headline">¶</a></h2>

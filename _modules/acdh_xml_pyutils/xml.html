@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>acdh_xml_pyutils.xml &mdash; ACDH XML PyUtils 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> ACDH XML PyUtils
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">ACDH XML PyUtils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">acdh_xml_pyutils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code_of_conduct.html">Contributor Covenant Code of Conduct</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ACDH XML PyUtils</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>acdh_xml_pyutils.xml</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for acdh_xml_pyutils.xml</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">lxml.etree</span> <span class="k">as</span> <span class="nn">ET</span>
+
+
+<div class="viewcode-block" id="XMLReader"><a class="viewcode-back" href="../../acdh_xml_pyutils.html#acdh_xml_pyutils.xml.XMLReader">[docs]</a><span class="k">class</span> <span class="nc">XMLReader</span><span class="p">():</span>
+
+    <span class="sd">&quot;&quot;&quot; Class to parse, preprocess and save XML/TEI</span>
+
+<span class="sd">    :param xml: An XML Document, either a File Path, an URL to an XML or an XML string</span>
+<span class="sd">    :type xml: str</span>
+
+<span class="sd">    :return: A XMLReader instance</span>
+<span class="sd">    :rtype: `xml.XMLReader`</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xml</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot; initializes the class</span>
+
+<span class="sd">        :param xml: An XML Document, either a File Path, an URL to an XML or an XML string</span>
+<span class="sd">        :type xml: str</span>
+
+<span class="sd">        :return: A XMLReader instance</span>
+<span class="sd">        :rtype: `xml.XMLReader`</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ns_tei</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;tei&#39;</span><span class="p">:</span> <span class="s2">&quot;http://www.tei-c.org/ns/1.0&quot;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ns_xml</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;xml&#39;</span><span class="p">:</span> <span class="s2">&quot;http://www.w3.org/XML/1998/namespace&quot;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ns_tcf</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;tcf&#39;</span><span class="p">:</span> <span class="s2">&quot;http://www.dspin.de/data/textcorpus&quot;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nsmap</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;tei&#39;</span><span class="p">:</span> <span class="s2">&quot;http://www.tei-c.org/ns/1.0&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;xml&#39;</span><span class="p">:</span> <span class="s2">&quot;http://www.w3.org/XML/1998/namespace&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;tcf&#39;</span><span class="p">:</span> <span class="s2">&quot;http://www.dspin.de/data/textcorpus&quot;</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">original</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">original</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&lt;&#39;</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">original</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">original</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">original</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">)</span>
+        <span class="c1">#     try:</span>
+        <span class="c1">#         self.original = ET.fromstring(self.file.encode(&#39;utf8&#39;))</span>
+        <span class="c1">#     except Exception as e:</span>
+        <span class="c1">#         r = requests.get(self.file)</span>
+        <span class="c1">#         self.original = ET.fromstring(r.text)</span>
+        <span class="c1"># try:</span>
+        <span class="c1">#     self.tree = ET.parse(self.file)</span>
+        <span class="c1"># except Exception as e:</span>
+        <span class="c1">#     try:</span>
+        <span class="c1">#         self.tree = ET.fromstring(self.file.encode(&#39;utf8&#39;))</span>
+        <span class="c1">#     except Exception as e:</span>
+        <span class="c1">#         r = requests.get(self.file)</span>
+        <span class="c1">#         self.tree = ET.fromstring(r.text)</span>
+        <span class="c1"># except Exception as e:</span>
+        <span class="c1">#     self.parsed_file = &quot;parsing didn&#39;t work&quot;</span>
+
+<div class="viewcode-block" id="XMLReader.return_byte_like_object"><a class="viewcode-back" href="../../acdh_xml_pyutils.html#acdh_xml_pyutils.xml.XMLReader.return_byte_like_object">[docs]</a>    <span class="k">def</span> <span class="nf">return_byte_like_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; returns current doc as byte like object&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">ET</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="XMLReader.return_string"><a class="viewcode-back" href="../../acdh_xml_pyutils.html#acdh_xml_pyutils.xml.XMLReader.return_string">[docs]</a>    <span class="k">def</span> <span class="nf">return_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        returns current doc as string</span>
+
+<span class="sd">        :rtype: str</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_byte_like_object</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="XMLReader.tree_to_file"><a class="viewcode-back" href="../../acdh_xml_pyutils.html#acdh_xml_pyutils.xml.XMLReader.tree_to_file">[docs]</a>    <span class="k">def</span> <span class="nf">tree_to_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        saves current tree to file</span>
+
+<span class="sd">        :param file: A filename/location to save the current doc</span>
+<span class="sd">        :type file: str</span>
+
+<span class="sd">        :return: The save-location</span>
+<span class="sd">        :rtype: str</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">file</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">-%H-%M-%S&#39;</span><span class="p">)</span>
+            <span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.xml&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">file</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2021, Peter Andorfer
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
