@@ -24,7 +24,7 @@ Utility functions to work with XML
 
 
 * Free software: MIT
-* Documentation: https://ACDH-XML-PyUtils.readthedocs.io.
+* Documentation: https://acdh-xml-pyutils.readthedocs.io.
 
 
 Features

@@ -1,2 +1,2 @@
-rich==9.1.0
-
+lxml
+requests

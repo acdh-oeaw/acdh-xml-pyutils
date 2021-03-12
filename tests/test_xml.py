@@ -1,25 +1,91 @@
 #!/usr/bin/env python
 
-"""Tests for `acdh_xml_pyutils` package."""
-import os
+"""Tests for `acdh_xml_pyutils.xml` module."""
 
-import pytest
+import glob
+import unittest
+
+from acdh_xml_pyutils.xml import XMLReader
+
+FILES = glob.glob(
+    "./acdh_xml_pyutils/files/*.xml",
+    recursive=False
+)
+
+# XML_URL = "https://id.acdh.oeaw.ac.at/thun/editions/szeberinyi-an-thun-1859-11-29-a3-xxi-d529.xml?format=raw"
+
+XML_URLS = [
+    "https://id.acdh.oeaw.ac.at/thun/editions/szeberinyi-an-thun-1859-11-29-a3-xxi-d529.xml?format=raw",
+    "https://raw.githubusercontent.com/bleierr/NERDPool/main/RTA_1576/HStA_Dresden_Loc10199_4_fol265_1576-07-15.xml",
+    "https://raw.githubusercontent.com/KONDE-AT/thun-data/master/editions/ansichten-ueber-waisenvermoegen-von-walter-1857-08-22-a3-xxi-d430.xml"
+]
+
+XML_STRINGS = ["""
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Title</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Publication Information</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+  </teiHeader>
+  <text>
+      <body>
+         <p>Some text here.</p>
+      </body>
+  </text>
+</TEI>
+""",
+"""<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Title</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Publication Information</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+  </teiHeader>
+  <text>
+      <body>
+         <p>Some text here.</p>
+      </body>
+  </text>
+</TEI>
+"""]
 
 
-# from acdh_xml_pyutils import acdh_xml_pyutils
+class TestAcdh_collatex_utils(unittest.TestCase):
+    """Tests for `acdh_collatex_utils` package."""
 
+    def setUp(self):
+        """Set up test fixtures, if any."""
 
-@pytest.fixture
-def response():
-    """Sample pytest fixture.
+    def tearDown(self):
+        """Tear down test fixtures, if any."""
 
-    See more at: http://doc.pytest.org/en/latest/fixture.html
-    """
-    import requests
-    return requests.get('https://github.com/torvalds/linux')
+    def test_001_parse_from_file(self):
+        for x in FILES:
+            doc = XMLReader(xml=x)
+            self.assertIsInstance(doc.nsmap, dict)
 
+    def test_002_parse_from_url(self):
+        for x in XML_URLS:
+            doc = XMLReader(xml=x)
+            self.assertIsInstance(doc.nsmap, dict)
 
-def test_content(response):
-    """Sample pytest test function with the pytest fixture as an argument."""
-    # from bs4 import BeautifulSoup
-    # assert 'GitHub' in BeautifulSoup(response.content).title.string
+    def test_003_parse_str(self):
+        for x in XML_STRINGS:
+            doc = XMLReader(xml=x)
+            self.assertIsInstance(doc.nsmap, dict)
