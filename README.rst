@@ -30,7 +30,10 @@ Utility functions to work with XML
 Features
 --------
 
-* TODO
+* parse XML from files, strings or URLS
+* print/save parsed files
+
+see `tests/test_xml.py` for usage examples
 
 Credits
 -------

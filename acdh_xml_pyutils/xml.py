@@ -49,21 +49,8 @@ class XMLReader():
                 self.original = ET.fromstring(self.file.encode('utf8'))
         else:
             self.original = ET.parse(self.file)
-        #     try:
-        #         self.original = ET.fromstring(self.file.encode('utf8'))
-        #     except Exception as e:
-        #         r = requests.get(self.file)
-        #         self.original = ET.fromstring(r.text)
-        # try:
-        #     self.tree = ET.parse(self.file)
-        # except Exception as e:
-        #     try:
-        #         self.tree = ET.fromstring(self.file.encode('utf8'))
-        #     except Exception as e:
-        #         r = requests.get(self.file)
-        #         self.tree = ET.fromstring(r.text)
-        # except Exception as e:
-        #     self.parsed_file = "parsing didn't work"
+
+        self.tree = self.original
 
     def return_byte_like_object(self):
         """ returns current doc as byte like object"""

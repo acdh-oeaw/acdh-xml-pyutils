@@ -3,6 +3,7 @@
 """Tests for `acdh_xml_pyutils.xml` module."""
 
 import glob
+import os
 import unittest
 
 from acdh_xml_pyutils.xml import XMLReader
@@ -89,3 +90,23 @@ class TestAcdh_collatex_utils(unittest.TestCase):
         for x in XML_STRINGS:
             doc = XMLReader(xml=x)
             self.assertIsInstance(doc.nsmap, dict)
+
+    def test_004_parse_all(self):
+        items = XML_URLS + XML_STRINGS + FILES
+        for x in items:
+            doc = XMLReader(xml=x)
+            self.assertIsInstance(doc.return_string(), str)
+            self.assertIsInstance(doc.return_byte_like_object(), bytes)
+
+    def test_004_write_to_file(self):
+        doc = XMLReader(xml=XML_STRINGS[0])
+        res = doc.tree_to_file()
+        self.assertTrue(res.startswith('2'))
+        self.assertTrue(res.endswith('.xml'))
+        self.assertTrue(os.path.isfile(res))
+        os.remove(res)
+        res = doc.tree_to_file(file='hansi.xml')
+        self.assertTrue(res.startswith('hansi'))
+        self.assertTrue(res.endswith('.xml'))
+        self.assertTrue(os.path.isfile(res))
+        os.remove(res)
