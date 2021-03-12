@@ -1,4 +1,4 @@
-name: Build acdh_xml_pyutils Package
+name: Build
 
 on: [push, pull_request]
 

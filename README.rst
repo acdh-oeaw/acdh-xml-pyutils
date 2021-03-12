@@ -15,8 +15,8 @@ ACDH XML PyUtils
         :alt: PyPI Status
 
 
-.. image:: https://readthedocs.org/projects/ACDH XML PyUtils/badge/?version=latest
-        :target: https://ACDH XML PyUtils.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/acdh-xml-pyutils/badge/?version=latest
+        :target: https://acdh-xml-pyutils.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 
