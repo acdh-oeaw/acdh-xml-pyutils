@@ -2,18 +2,17 @@
 ACDH XML PyUtils
 ================
 
-.. image:: https://github.com/acdh-oeaw/acdh_xml_pyutils/workflows/Build%20acdh_xml_pyutils%20Package/badge.svg
-        :target: https://github.com/acdh-oeaw/acdh_xml_pyutils/workflows/Build%20acdh_xml_pyutils%20Package/badge.svg
+.. image:: https://github.com/acdh-oeaw/acdh_xml_pyutils/workflows/Build/badge.svg
+        :target: https://github.com/acdh-oeaw/acdh_xml_pyutils/workflows/Build/badge.svg
         :alt: Github Workflow Build ACDH XML PyUtils Status
 
-.. image:: https://github.com/acdh-oeaw/acdh_xml_pyutils/workflows/Run%20acdh_xml_pyutils%20Tox%20Test%20Suite/badge.svg
-        :target: https://github.com/acdh-oeaw/acdh_xml_pyutils/workflows/Run%20acdh_xml_pyutils%20Tox%20Test%20Suite/badge.svg
+.. image:: https://github.com/acdh-oeaw/acdh_xml_pyutils/workflows/Test/badge.svg
+        :target: https://github.com/acdh-oeaw/acdh_xml_pyutils/workflows/Test/badge.svg
         :alt: Github Workflow Tests Status
 
-.. image:: https://img.shields.io/pypi/v/ACDH XML PyUtils.svg
-        :target: https://pypi.python.org/pypi/ACDH XML PyUtils
+.. image:: https://img.shields.io/pypi/v/acdh-xml-pyutils.svg
+        :target: https://pypi.python.org/pypi/acdh-xml-pyutils
         :alt: PyPI Status
-
 
 .. image:: https://readthedocs.org/projects/acdh-xml-pyutils/badge/?version=latest
         :target: https://acdh-xml-pyutils.readthedocs.io/en/latest/?badge=latest
