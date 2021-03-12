@@ -2,12 +2,12 @@
 ACDH XML PyUtils
 ================
 
-.. image:: https://github.com/acdh-oeaw/acdh_xml_pyutils/workflows/Build/badge.svg
-        :target: https://github.com/acdh-oeaw/acdh_xml_pyutils/workflows/Build/badge.svg
-        :alt: Github Workflow Build ACDH XML PyUtils Status
+.. image:: https://github.com/acdh-oeaw/acdh-xml-pyutils/workflows/Build/badge.svg
+        :target: https://github.com/acdh-oeaw/xml-arche-pyutils/workflows/Build/badge.svg
+        :alt: Github Workflow Build acdh-arche-pyutils Status
 
-.. image:: https://github.com/acdh-oeaw/acdh_xml_pyutils/workflows/Test/badge.svg
-        :target: https://github.com/acdh-oeaw/acdh_xml_pyutils/workflows/Test/badge.svg
+.. image:: https://github.com/acdh-oeaw/acdh-xml-pyutils/workflows/Test/badge.svg
+        :target: https://github.com/acdh-oeaw/acdh-xml-pyutils/workflows/Test/badge.svg
         :alt: Github Workflow Tests Status
 
 .. image:: https://img.shields.io/pypi/v/acdh-xml-pyutils.svg
