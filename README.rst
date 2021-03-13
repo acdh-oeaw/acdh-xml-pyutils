@@ -19,6 +19,10 @@ ACDH XML PyUtils
         :alt: Documentation Status
 
 
+.. image:: https://codecov.io/gh/acdh-oeaw/acdh-xml-pyutils/branch/master/graph/badge.svg?token=oYG6gr1eec
+        :target: https://codecov.io/gh/acdh-oeaw/acdh-xml-pyutils
+    
+
 Utility functions to work with XML
 
 
