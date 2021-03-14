@@ -6,6 +6,8 @@ import glob
 import os
 import unittest
 
+import collections
+
 from acdh_xml_pyutils.xml import XMLReader
 
 FILES = glob.glob(
@@ -110,3 +112,14 @@ class TestAcdh_xml_pyutils(unittest.TestCase):
         self.assertTrue(res.endswith('.xml'))
         self.assertTrue(os.path.isfile(res))
         os.remove(res)
+
+    def test_005_get_elements(self):
+        doc = XMLReader(xml=XML_STRINGS[0])
+        els = doc.get_elements()
+        self.assertIsInstance(els, list)
+
+    def test_006_get_element_stats(self):
+        doc = XMLReader(xml=XML_STRINGS[0])
+        els = doc.get_element_stats()
+        self.assertIsInstance(els, collections.Counter)
+        self.assertTrue('{http://www.tei-c.org/ns/1.0}TEI' in els.keys())

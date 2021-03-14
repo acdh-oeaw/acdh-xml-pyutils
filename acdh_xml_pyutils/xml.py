@@ -3,6 +3,8 @@ import datetime
 import requests
 import lxml.etree as ET
 
+from collections import Counter
+
 
 class XMLReader():
 
@@ -51,6 +53,24 @@ class XMLReader():
             self.original = ET.parse(self.file)
 
         self.tree = self.original
+
+    def get_elements(self):
+        """ returns a list of all element names of the current tree
+
+        :return: A list of all element names
+        :rtype: list
+
+        """
+        all_elements = [element.tag for element in self.tree.iter()]
+        return all_elements
+
+    def get_element_stats(self):
+        """ returns a `collections.Counter` object holding element count
+
+        :return: A list of all element names
+        :rtype: `collections.Counter`
+        """
+        return Counter(self.get_elements())
 
     def return_byte_like_object(self):
         """ returns current doc as byte like object"""
