@@ -67,8 +67,8 @@ XML_STRINGS = ["""
 """]
 
 
-class TestAcdh_collatex_utils(unittest.TestCase):
-    """Tests for `acdh_collatex_utils` package."""
+class TestAcdh_xml_pyutils(unittest.TestCase):
+    """Tests for `acdh_xml_pyutils` package."""
 
     def setUp(self):
         """Set up test fixtures, if any."""
