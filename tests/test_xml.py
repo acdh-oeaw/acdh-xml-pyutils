@@ -68,6 +68,11 @@ XML_STRINGS = ["""
 </TEI>
 """]
 
+DEFAULT_XSL = os.path.join(
+    os.path.dirname(__file__),
+    "test.xsl"
+)
+
 
 class TestAcdh_xml_pyutils(unittest.TestCase):
     """Tests for `acdh_xml_pyutils` package."""
@@ -123,3 +128,8 @@ class TestAcdh_xml_pyutils(unittest.TestCase):
         els = doc.get_element_stats()
         self.assertIsInstance(els, collections.Counter)
         self.assertTrue('{http://www.tei-c.org/ns/1.0}TEI' in els.keys())
+
+    def test_007_transform(self):
+        doc = XMLReader(xml=XML_STRINGS[0], xsl=DEFAULT_XSL)
+        els = doc.get_elements()
+        self.assertTrue('{http://www.tei-c.org/ns/1.0}hansi' in els)

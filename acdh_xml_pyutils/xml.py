@@ -18,12 +18,15 @@ class XMLReader():
 
     """
 
-    def __init__(self, xml=None):
+    def __init__(self, xml=None, xsl=None):
 
         """ initializes the class
 
         :param xml: An XML Document, either a File Path, an URL to an XML or an XML string
         :type xml: str
+
+        :param xsl: Path to an XSL Stylesheet
+        :type xsl: str
 
         :return: A XMLReader instance
         :rtype: `xml.XMLReader`
@@ -38,6 +41,10 @@ class XMLReader():
             'tcf': "http://www.dspin.de/data/textcorpus"
         }
         self.file = xml.strip()
+        if xsl:
+            self.xsl = ET.parse(xsl)
+        else:
+            self.xsl = None
         if self.file.startswith('http'):
             r = requests.get(self.file)
             try:
@@ -51,8 +58,10 @@ class XMLReader():
                 self.original = ET.fromstring(self.file.encode('utf8'))
         else:
             self.original = ET.parse(self.file)
-
         self.tree = self.original
+        if self.xsl:
+            transform = ET.XSLT(self.xsl)
+            self.tree = transform(self.tree)
 
     def get_elements(self):
         """ returns a list of all element names of the current tree
