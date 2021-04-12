@@ -20,7 +20,8 @@ FILES = glob.glob(
 XML_URLS = [
     "https://id.acdh.oeaw.ac.at/thun/editions/szeberinyi-an-thun-1859-11-29-a3-xxi-d529.xml?format=raw",
     "https://raw.githubusercontent.com/bleierr/NERDPool/main/RTA_1576/HStA_Dresden_Loc10199_4_fol265_1576-07-15.xml",
-    "https://raw.githubusercontent.com/KONDE-AT/thun-data/master/editions/ansichten-ueber-waisenvermoegen-von-walter-1857-08-22-a3-xxi-d430.xml"
+    "https://raw.githubusercontent.com/KONDE-AT/thun-data/master/editions/ansichten-ueber-waisenvermoegen-von-walter-1857-08-22-a3-xxi-d430.xml",
+    "http://gams.uni-graz.at/o:aled.1/TEI_SOURCE",
 ]
 
 XML_STRINGS = ["""

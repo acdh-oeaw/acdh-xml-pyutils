@@ -46,11 +46,17 @@ class XMLReader():
         else:
             self.xsl = None
         if self.file.startswith('http'):
-            r = requests.get(self.file)
+            r = requests.get(
+                self.file,
+                headers={
+                    'Content-type': 'application/xml; charset=utf-8',
+                    'Accept-Charset': 'utf-8'
+                    }
+                )
             try:
-                self.original = ET.fromstring(r.text)
+                self.original = ET.fromstring(r.content.decode('utf-8'))
             except ValueError:
-                self.original = ET.fromstring(r.content)
+                self.original = ET.fromstring(r.content.decode('utf-8').encode('utf-8'))
         elif self.file.startswith('<'):
             try:
                 self.original = ET.parse(self.file)
