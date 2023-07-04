@@ -23,18 +23,11 @@ def walker(base, *paths):
     return list(file_list)
 
 
-with open('README.rst') as readme_file:
+with open('README.md') as readme_file:
     readme = readme_file.read()
-
-with open('CHANGELOG.rst') as history_file:
-    history = history_file.read()
 
 with open('requirements.txt') as f:
     requirements = f.read().splitlines()
-
-setup_requirements = ['pytest-runner', ]
-
-test_requirements = ['pytest>=3', ]
 
 setup(
     author="Peter Andorfer",
@@ -52,7 +45,8 @@ setup(
     description="Utility functions to work with XML",
     install_requires=requirements,
     license="MIT",
-    long_description=readme + '\n\n' + history,
+    long_description=readme,
+    long_description_content_type="text/markdown",
     include_package_data=True,
     keywords='acdh_xml_pyutils',
     name='acdh_xml_pyutils',
@@ -63,9 +57,6 @@ setup(
             'files'
         ),
     },
-    setup_requires=setup_requirements,
-    test_suite='tests',
-    tests_require=test_requirements,
     url='https://github.com/acdh-oeaw/acdh_xml_pyutils',
     version='0.4.0',
     zip_safe=False,

@@ -10,21 +10,18 @@ import collections
 
 from acdh_xml_pyutils.xml import XMLReader
 
-FILES = glob.glob(
-    "./acdh_xml_pyutils/files/*.xml",
-    recursive=False
-)
+FILES = glob.glob("./acdh_xml_pyutils/files/*.xml", recursive=False)
 
 # XML_URL = "https://id.acdh.oeaw.ac.at/thun/editions/szeberinyi-an-thun-1859-11-29-a3-xxi-d529.xml?format=raw"
 
 XML_URLS = [
     "https://id.acdh.oeaw.ac.at/thun/editions/szeberinyi-an-thun-1859-11-29-a3-xxi-d529.xml?format=raw",
-    "https://raw.githubusercontent.com/bleierr/NERDPool/main/RTA_1576/HStA_Dresden_Loc10199_4_fol265_1576-07-15.xml",
-    "https://raw.githubusercontent.com/KONDE-AT/thun-data/master/editions/ansichten-ueber-waisenvermoegen-von-walter-1857-08-22-a3-xxi-d430.xml",
+    "https://raw.githubusercontent.com/KONDE-AT/thun-data/master/editions/ansichten-ueber-waisenvermoegen-von-walter-1857-08-22-a3-xxi-d430.xml",  # noqa: E501
     "http://gams.uni-graz.at/o:aled.1/TEI_SOURCE",
 ]
 
-XML_STRINGS = ["""
+XML_STRINGS = [
+    """
 <?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
@@ -47,7 +44,7 @@ XML_STRINGS = ["""
   </text>
 </TEI>
 """,
-"""<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    """<TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
       <fileDesc>
          <titleStmt>
@@ -67,12 +64,10 @@ XML_STRINGS = ["""
       </body>
   </text>
 </TEI>
-"""]
+""",
+]
 
-DEFAULT_XSL = os.path.join(
-    os.path.dirname(__file__),
-    "test.xsl"
-)
+DEFAULT_XSL = os.path.join(os.path.dirname(__file__), "test.xsl")
 
 
 class TestAcdh_xml_pyutils(unittest.TestCase):
@@ -109,13 +104,13 @@ class TestAcdh_xml_pyutils(unittest.TestCase):
     def test_004_write_to_file(self):
         doc = XMLReader(xml=XML_STRINGS[0])
         res = doc.tree_to_file()
-        self.assertTrue(res.startswith('2'))
-        self.assertTrue(res.endswith('.xml'))
+        self.assertTrue(res.startswith("2"))
+        self.assertTrue(res.endswith(".xml"))
         self.assertTrue(os.path.isfile(res))
         os.remove(res)
-        res = doc.tree_to_file(file='hansi.xml')
-        self.assertTrue(res.startswith('hansi'))
-        self.assertTrue(res.endswith('.xml'))
+        res = doc.tree_to_file(file="hansi.xml")
+        self.assertTrue(res.startswith("hansi"))
+        self.assertTrue(res.endswith(".xml"))
         self.assertTrue(os.path.isfile(res))
         os.remove(res)
 
@@ -128,9 +123,9 @@ class TestAcdh_xml_pyutils(unittest.TestCase):
         doc = XMLReader(xml=XML_STRINGS[0])
         els = doc.get_element_stats()
         self.assertIsInstance(els, collections.Counter)
-        self.assertTrue('{http://www.tei-c.org/ns/1.0}TEI' in els.keys())
+        self.assertTrue("{http://www.tei-c.org/ns/1.0}TEI" in els.keys())
 
     def test_007_transform(self):
         doc = XMLReader(xml=XML_STRINGS[0], xsl=DEFAULT_XSL)
         els = doc.get_elements()
-        self.assertTrue('{http://www.tei-c.org/ns/1.0}hansi' in els)
+        self.assertTrue("{http://www.tei-c.org/ns/1.0}hansi" in els)
