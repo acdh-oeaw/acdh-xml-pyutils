@@ -57,7 +57,7 @@ setup(
             'files'
         ),
     },
-    url='https://github.com/acdh-oeaw/acdh_xml_pyutils',
+    url='https://github.com/acdh-oeaw/acdh-xml-pyutils',
     version='0.4.1',
     zip_safe=False,
 )
