@@ -114,6 +114,20 @@ class TestAcdh_xml_pyutils(unittest.TestCase):
         self.assertTrue(os.path.isfile(res))
         os.remove(res)
 
+    def test_004a_without_declaration(self):
+        doc = XMLReader(xml=XML_STRINGS[0])
+        res = doc.tree_to_file()
+        res = doc.tree_to_file(file="hansi.xml", xml_declaration=False)
+        with open(res, "r") as f:
+            text = f.read()
+            self.assertTrue(text.startswith("<TEI"))
+        os.remove(res)
+        res = doc.tree_to_file(file="hansi.xml")
+        with open(res, "r") as f:
+            text = f.read()
+            self.assertTrue(text.startswith("<?xml"))
+        os.remove(res)
+
     def test_005_get_elements(self):
         doc = XMLReader(xml=XML_STRINGS[0])
         els = doc.get_elements()
