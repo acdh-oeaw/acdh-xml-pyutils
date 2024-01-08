@@ -38,6 +38,14 @@ class XMLReader:
             "tei": "http://www.tei-c.org/ns/1.0",
             "xml": "http://www.w3.org/XML/1998/namespace",
             "tcf": "http://www.dspin.de/data/textcorpus",
+            "mets": "http://www.loc.gov/METS/",
+            "mods": "http://www.loc.gov/mods/v3",
+            "xlink": "http://www.w3.org/1999/xlink",
+            "skos": "http://www.w3.org/2004/02/skos/core#",
+            "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+            "dc": "http://purl.org/dc/elements/1.1/",
+            "acdh": "https://vocabs.acdh.oeaw.ac.at/schema#",
         }
         self.file = xml.strip()
         if xsl:
