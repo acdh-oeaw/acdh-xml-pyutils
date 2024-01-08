@@ -108,17 +108,24 @@ class XMLReader:
         """
         return self.return_byte_like_object().decode("utf-8")
 
-    def tree_to_file(self, file=None):
+    def tree_to_file(self, file=None, xml_declaration=True):
         """
         saves current tree to file
 
         :param file: A filename/location to save the current doc
         :type file: str
 
+        :param xml_declaration: should XML declaration be added
+        :type xml_declaration: bool
+
         :return: The save-location
         :rtype: str
 
         """
+        if xml_declaration:
+            pass
+        else:
+            xml_declaration = None
         if file:
             pass
         else:
@@ -128,5 +135,5 @@ class XMLReader:
             file = "{}.xml".format(timestamp)
 
         with open(file, "wb") as f:
-            f.write(ET.tostring(self.tree, encoding="UTF-8"))
+            f.write(ET.tostring(self.tree, xml_declaration=xml_declaration, encoding="UTF-8"))
         return file
