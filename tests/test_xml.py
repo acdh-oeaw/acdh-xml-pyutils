@@ -15,7 +15,6 @@ FILES = glob.glob("./acdh_xml_pyutils/files/*.xml", recursive=False)
 # XML_URL = "https://id.acdh.oeaw.ac.at/thun/editions/szeberinyi-an-thun-1859-11-29-a3-xxi-d529.xml?format=raw"
 
 XML_URLS = [
-    "https://id.acdh.oeaw.ac.at/thun/editions/szeberinyi-an-thun-1859-11-29-a3-xxi-d529.xml?format=raw",
     "https://raw.githubusercontent.com/KONDE-AT/thun-data/master/editions/ansichten-ueber-waisenvermoegen-von-walter-1857-08-22-a3-xxi-d430.xml",  # noqa: E501
     "http://gams.uni-graz.at/o:aled.1/TEI_SOURCE",
 ]
@@ -78,6 +77,8 @@ class TestAcdh_xml_pyutils(unittest.TestCase):
 
     def tearDown(self):
         """Tear down test fixtures, if any."""
+        for x in glob.glob("./*.xml"):
+            os.remove(x)
 
     def test_001_parse_from_file(self):
         for x in FILES:
