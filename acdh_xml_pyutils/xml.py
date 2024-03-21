@@ -5,9 +5,23 @@ import lxml.etree as ET
 
 from collections import Counter
 
+NSMAP = {
+    "tei": "http://www.tei-c.org/ns/1.0",
+    "xml": "http://www.w3.org/XML/1998/namespace",
+    "tcf": "http://www.dspin.de/data/textcorpus",
+    "mets": "http://www.loc.gov/METS/",
+    "mods": "http://www.loc.gov/mods/v3",
+    "xlink": "http://www.w3.org/1999/xlink",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "acdh": "https://vocabs.acdh.oeaw.ac.at/schema#",
+    "page": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2013-07-15",
+}
+
 
 class XMLReader:
-
     """Class to parse, preprocess and save XML/TEI
 
     :param xml: An XML Document, either a File Path, an URL to an XML or an XML string
@@ -34,20 +48,7 @@ class XMLReader:
         self.ns_tei = {"tei": "http://www.tei-c.org/ns/1.0"}
         self.ns_xml = {"xml": "http://www.w3.org/XML/1998/namespace"}
         self.ns_tcf = {"tcf": "http://www.dspin.de/data/textcorpus"}
-        self.nsmap = {
-            "tei": "http://www.tei-c.org/ns/1.0",
-            "xml": "http://www.w3.org/XML/1998/namespace",
-            "tcf": "http://www.dspin.de/data/textcorpus",
-            "mets": "http://www.loc.gov/METS/",
-            "mods": "http://www.loc.gov/mods/v3",
-            "xlink": "http://www.w3.org/1999/xlink",
-            "skos": "http://www.w3.org/2004/02/skos/core#",
-            "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-            "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-            "dc": "http://purl.org/dc/elements/1.1/",
-            "acdh": "https://vocabs.acdh.oeaw.ac.at/schema#",
-            "page": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2013-07-15",
-        }
+        self.nsmap = NSMAP
         self.file = xml.strip()
         if xsl:
             self.xsl = ET.parse(xsl)
@@ -136,5 +137,9 @@ class XMLReader:
             file = "{}.xml".format(timestamp)
 
         with open(file, "wb") as f:
-            f.write(ET.tostring(self.tree, xml_declaration=xml_declaration, encoding="UTF-8"))
+            f.write(
+                ET.tostring(
+                    self.tree, xml_declaration=xml_declaration, encoding="UTF-8"
+                )
+            )
         return file
