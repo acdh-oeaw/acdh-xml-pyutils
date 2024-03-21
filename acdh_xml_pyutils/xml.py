@@ -46,6 +46,7 @@ class XMLReader:
             "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
             "dc": "http://purl.org/dc/elements/1.1/",
             "acdh": "https://vocabs.acdh.oeaw.ac.at/schema#",
+            "page": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2013-07-15",
         }
         self.file = xml.strip()
         if xsl:
