@@ -1,5 +1,10 @@
 # ACDH XML PyUtils
 
+[![Lint](https://github.com/acdh-oeaw/acdh-xml-pyutils/actions/workflows/lint.yml/badge.svg)](https://github.com/acdh-oeaw/acdh-xml-pyutils/actions/workflows/lint.yml)
+[![docs](https://github.com/acdh-oeaw/acdh-xml-pyutils/actions/workflows/docs.yml/badge.svg)](https://github.com/acdh-oeaw/acdh-xml-pyutils/actions/workflows/docs.yml)
+[![Test](https://github.com/acdh-oeaw/acdh-xml-pyutils/actions/workflows/test.yml/badge.svg)](https://github.com/acdh-oeaw/acdh-xml-pyutils/actions/workflows/test.yml)
+[![PyPI version](https://badge.fury.io/py/acdh-xml-pyutils.svg)](https://badge.fury.io/py/acdh-xml-pyutils)
+
 Utility functions to work with XML
 
 
