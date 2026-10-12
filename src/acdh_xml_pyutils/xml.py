@@ -1,9 +1,9 @@
-import time
 import datetime
-import requests
-import lxml.etree as ET
-
+import time
 from collections import Counter
+
+import lxml.etree as ET
+import requests
 
 NSMAP = {
     "tei": "http://www.tei-c.org/ns/1.0",
@@ -134,7 +134,7 @@ class XMLReader:
             timestamp = datetime.datetime.fromtimestamp(time.time()).strftime(
                 "%Y-%m-%d-%H-%M-%S"
             )
-            file = "{}.xml".format(timestamp)
+            file = f"{timestamp}.xml"
 
         with open(file, "wb") as f:
             f.write(

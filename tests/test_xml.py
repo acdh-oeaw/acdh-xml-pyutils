@@ -1,12 +1,9 @@
-#!/usr/bin/env python
-
 """Tests for `acdh_xml_pyutils.xml` module."""
 
+import collections
 import glob
 import os
 import unittest
-
-import collections
 
 from acdh_xml_pyutils.xml import XMLReader
 
@@ -15,7 +12,7 @@ FILES = glob.glob("./acdh_xml_pyutils/files/*.xml", recursive=False)
 # XML_URL = "https://id.acdh.oeaw.ac.at/thun/editions/szeberinyi-an-thun-1859-11-29-a3-xxi-d529.xml?format=raw"
 
 XML_URLS = [
-    "https://raw.githubusercontent.com/KONDE-AT/thun-data/master/editions/ansichten-ueber-waisenvermoegen-von-walter-1857-08-22-a3-xxi-d430.xml",  # noqa: E501
+    "https://raw.githubusercontent.com/KONDE-AT/thun-data/master/editions/ansichten-ueber-waisenvermoegen-von-walter-1857-08-22-a3-xxi-d430.xml",
     "http://gams.uni-graz.at/o:aled.1/TEI_SOURCE",
 ]
 
@@ -138,7 +135,7 @@ class TestAcdh_xml_pyutils(unittest.TestCase):
         doc = XMLReader(xml=XML_STRINGS[0])
         els = doc.get_element_stats()
         self.assertIsInstance(els, collections.Counter)
-        self.assertTrue("{http://www.tei-c.org/ns/1.0}TEI" in els.keys())
+        self.assertTrue("{http://www.tei-c.org/ns/1.0}TEI" in els)
 
     def test_007_transform(self):
         doc = XMLReader(xml=XML_STRINGS[0], xsl=DEFAULT_XSL)
